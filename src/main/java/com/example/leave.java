@@ -18,13 +18,14 @@ public class leave {
     By pendingApproval=By.id("leaveList_chkSearchFilter_1");
     By taken=By.id("leaveList_chkSearchFilter_3");
     By deshboard=By.linkText("Dashboard");
-    By selectAction=By.linkText("Select Action");
+    By selectAction=By.xpath("//div[@class='message warning fadable']");
 
     By status= By.xpath("//table[@id='resultTable']//tbody//tr//td[]");
     By saveButton=By.id("btnSave");
 
     By profileIcon=By.id("welcome");
     By logout=By.xpath("//a[contains(text(), 'Logout')]");
+
 
     int rowSize;
 
@@ -56,7 +57,7 @@ public class leave {
         }
         driver.findElement(search).click();
         List<WebElement> rows= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr"));
-        System.out.println(rows.size());
+        System.out.println("Total Canceled Leave: "+rows.size());
 
     }
 
@@ -81,14 +82,14 @@ public class leave {
         driver.findElement(search).click();
         List<WebElement> rows= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr"));
         List<WebElement> statusColoum= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr//td[6]"));
-        System.out.println(rows.size());
+        System.out.println("Total Rejected Leave:"+rows.size());
         rowSize=rows.size();
         int temp=1;
         for(WebElement col: statusColoum ){
-            System.out.println(temp);
-            temp++;
+//            System.out.println(temp);
+//            temp++;
 
-            System.out.println(col.getText());
+//            System.out.println(col.getText());
             String checkRejected= col.getText();
             String subStrRejected= checkRejected.substring(0, 8);
             if(subStrRejected.equals("Rejected")){
@@ -106,14 +107,17 @@ public class leave {
         driver.findElement(logout).click();
 
     }
-    public boolean saveData(){
+    public boolean saveData() throws InterruptedException {
         driver.findElement(saveButton).click();
         boolean temp=false;
-        // if(driver.findElement(selectAction).isDisplayed()){
-        //     temp=true;
-        // }
+        Thread.sleep(2000);
+        String tem=driver.findElement(selectAction).getText();
+//        System.out.println(tem);
+         if(tem.equals("Select Action")){
+             temp=true;
+         }
 
-        System.out.println("save button"+temp);
+//        System.out.println("save button"+temp);
         return temp;
 
     }

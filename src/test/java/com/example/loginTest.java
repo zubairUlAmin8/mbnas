@@ -1,6 +1,5 @@
 package com.example;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -19,6 +18,11 @@ public class loginTest {
     void verifyCancelLeave() {
      leaveObj.gotoLeave();
      leaveObj.selectCancelCheck();
+        try {
+            Assert.assertTrue(leaveObj.saveData());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         // WebElement title;
     }
     //Hi Zubair
@@ -32,7 +36,11 @@ public class loginTest {
         boolean checkTemp=leaveObj.selectRejectedCheck();
         System.out.println(checkTemp);
         Assert.assertTrue(checkTemp);
-        leaveObj.saveData();
+        try {
+            Assert.assertTrue(leaveObj.saveData());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

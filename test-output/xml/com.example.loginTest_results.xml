@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="GI"
+<testsuite name="mbnas"
            tests="2"
            failures="0"
            errors="0"
            skipped="0"
-           time="6.485">
+           time="10.886">
     <properties></properties>
 
 
 
             <testcase
                 name="verifyCancelLeave"
-                time="2.306"
+                time="4.718"
                 classname="com.example.loginTest">
             </testcase>
             <testcase
                 name="VerifyRejectLeave"
-                time="4.179"
+                time="6.168"
                 classname="com.example.loginTest">
             </testcase>
 </testsuite>
