@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-5f5d81c7-e613-4c0a-9570-c11669fdbda3"
+<testsuite name="GI"
            tests="2"
            failures="0"
            errors="0"
            skipped="0"
-           time="7.559">
+           time="6.485">
     <properties></properties>
 
+
+
             <testcase
-                name="VerifyRejectLeave"
-                time="4.803"
+                name="verifyCancelLeave"
+                time="2.306"
                 classname="com.example.loginTest">
             </testcase>
             <testcase
-                name="verifyCancelLeave"
-                time="2.756"
+                name="VerifyRejectLeave"
+                time="4.179"
                 classname="com.example.loginTest">
             </testcase>
 </testsuite>
