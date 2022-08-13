@@ -1,0 +1,121 @@
+package com.example;
+
+import java.util.List;
+
+// import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class leave {
+    WebDriver driver;
+    By leave=By.id("menu_leave_viewLeaveModule");
+    By cancled= By.id("leaveList_chkSearchFilter_0");
+    By search=By.id("btnSearch");
+    By all=By.id("leaveList_chkSearchFilter_checkboxgroup_allcheck");
+    By rejected=By.id("leaveList_chkSearchFilter_-1");
+    By scheduled=By.id("leaveList_chkSearchFilter_0");
+    By pendingApproval=By.id("leaveList_chkSearchFilter_1");
+    By taken=By.id("leaveList_chkSearchFilter_3");
+    By deshboard=By.linkText("Dashboard");
+    By selectAction=By.linkText("Select Action");
+
+    By status= By.xpath("//table[@id='resultTable']//tbody//tr//td[]");
+    By saveButton=By.id("btnSave");
+
+    By profileIcon=By.id("welcome");
+    By logout=By.xpath("//a[contains(text(), 'Logout')]");
+
+    int rowSize;
+
+    
+
+    // By rowCount=;
+
+    leave(WebDriver driver){
+        this.driver=driver;
+    }
+    public boolean Dashboard(){
+        boolean b=false;        
+        WebElement desh= driver.findElement(deshboard);
+        String temp=desh.getText();
+
+        if(temp.equals(desh.getText())){
+            b=true;
+        }
+        return b;
+    }
+    public void gotoLeave(){
+        driver.findElement(leave).click();
+    }
+    public void selectCancelCheck(){
+        driver.findElement(cancled).click();
+        if(driver.findElement(pendingApproval).isSelected());
+        {
+            driver.findElement(pendingApproval).click();
+        }
+        driver.findElement(search).click();
+        List<WebElement> rows= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr"));
+        System.out.println(rows.size());
+
+    }
+
+    public Boolean selectRejectedCheck(){
+
+        boolean check=false;
+
+        driver.findElement(rejected).click();
+
+        // Thread.sleep(5000);
+
+        // if(driver.findElement(cancled).isSelected());
+        // {
+        //     driver.findElement(cancled).click();
+        // }
+        
+        if(driver.findElement(pendingApproval).isSelected());
+        {
+            driver.findElement(pendingApproval).click();
+        }
+        
+        driver.findElement(search).click();
+        List<WebElement> rows= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr"));
+        List<WebElement> statusColoum= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr//td[6]"));
+        System.out.println(rows.size());
+        rowSize=rows.size();
+        int temp=1;
+        for(WebElement col: statusColoum ){
+            System.out.println(temp);
+            temp++;
+
+            System.out.println(col.getText());
+            String checkRejected= col.getText();
+            String subStrRejected= checkRejected.substring(0, 8);
+            if(subStrRejected.equals("Rejected")){
+                check=true;
+            }
+            // System.out.println(subStrRejected);
+        }
+
+        return check;
+
+    }
+    public void logout() throws InterruptedException{
+        driver.findElement(profileIcon).click();
+        Thread.sleep(2000);
+        driver.findElement(logout).click();
+
+    }
+    public boolean saveData(){
+        driver.findElement(saveButton).click();
+        boolean temp=false;
+        // if(driver.findElement(selectAction).isDisplayed()){
+        //     temp=true;
+        // }
+
+        System.out.println("save button"+temp);
+        return temp;
+
+    }
+
+}

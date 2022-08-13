@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-5f5d81c7-e613-4c0a-9570-c11669fdbda3"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="7.559">
+    <properties></properties>
+
+            <testcase
+                name="VerifyRejectLeave"
+                time="4.803"
+                classname="com.example.loginTest">
+            </testcase>
+            <testcase
+                name="verifyCancelLeave"
+                time="2.756"
+                classname="com.example.loginTest">
+            </testcase>
+</testsuite>
