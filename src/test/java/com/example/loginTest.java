@@ -12,21 +12,18 @@ public class loginTest {
     login logObj;
     leave leaveObj;
 
-    // @Parameters({"username", "password"})
-
     @Test(priority = 2)
     void verifyCancelLeave() {
      leaveObj.gotoLeave();
      leaveObj.selectCancelCheck();
         try {
             Assert.assertTrue(leaveObj.saveData());
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e)
+        {
             throw new RuntimeException(e);
         }
         // WebElement title;
     }
-    //Hi Zubair
-    //Hi Mubeen
 
     @Test(priority =1)
     void VerifyRejectLeave() {
@@ -52,22 +49,23 @@ public class loginTest {
         driver= new ChromeDriver();
         driver.get("https://opensource-demo.orangehrmlive.com/");
         String title= driver.getTitle();
-        Assert.assertEquals(title,"OrangeHRM", "launching fail fail");
+        Assert.assertEquals(title,"OrangeHRM", "launching fail");
     }
     @BeforeMethod
-    void login(){
+    @Parameters({"username", "password"})
+    void login(String username, String password)
+    {
         logObj=new login(driver);
         leaveObj=new leave(driver);
-        logObj.setvalue("Admin","admin123");
+        logObj.setvalue(username,password);
         boolean check=leaveObj.Dashboard();
-        Assert.assertTrue(check);
+       Assert.assertTrue(check);
     }
     @AfterMethod
     void userLogout(){
         try {
             leaveObj.logout();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

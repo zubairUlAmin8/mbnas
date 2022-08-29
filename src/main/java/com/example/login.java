@@ -11,7 +11,8 @@ public class login {
     login(WebDriver driver){
         this.driver=driver;
     }
-    void setvalue(String name, String pass){
+    void setvalue(String name, String pass)
+    {
         driver.findElement(username).sendKeys(name);
         driver.findElement(password).sendKeys(pass);
         driver.findElement(submit).click();

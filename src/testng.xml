@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Assignment 2">
+    <test name="OrangeHRMLive">
+        <parameter name="username" value="Admin"/>
+        <parameter name="password" value="admin123"/>
+        <classes>
+            <class name="com.example.loginTest"/>
+
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

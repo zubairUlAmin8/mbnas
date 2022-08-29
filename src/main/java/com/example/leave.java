@@ -29,9 +29,6 @@ public class leave {
 
     int rowSize;
 
-    
-
-    // By rowCount=;
 
     leave(WebDriver driver){
         this.driver=driver;
@@ -66,14 +63,6 @@ public class leave {
         boolean check=false;
 
         driver.findElement(rejected).click();
-
-        // Thread.sleep(5000);
-
-        // if(driver.findElement(cancled).isSelected());
-        // {
-        //     driver.findElement(cancled).click();
-        // }
-        
         if(driver.findElement(pendingApproval).isSelected());
         {
             driver.findElement(pendingApproval).click();
@@ -84,22 +73,21 @@ public class leave {
         List<WebElement> statusColoum= driver.findElements(By.xpath("//table[@id='resultTable']//tbody//tr//td[6]"));
         System.out.println("Total Rejected Leave:"+rows.size());
         rowSize=rows.size();
-        int temp=1;
         for(WebElement col: statusColoum ){
-//            System.out.println(temp);
-//            temp++;
 
-//            System.out.println(col.getText());
             String checkRejected= col.getText();
             String subStrRejected= checkRejected.substring(0, 8);
-            if(subStrRejected.equals("Rejected")){
+            if(subStrRejected.equals("Rejected"))
+            {
                 check=true;
             }
-            // System.out.println(subStrRejected);
+            else
+            {
+                check = false;
+                break;
+            }
         }
-
         return check;
-
     }
     public void logout() throws InterruptedException{
         driver.findElement(profileIcon).click();
@@ -112,12 +100,9 @@ public class leave {
         boolean temp=false;
         Thread.sleep(2000);
         String tem=driver.findElement(selectAction).getText();
-//        System.out.println(tem);
          if(tem.equals("Select Action")){
              temp=true;
          }
-
-//        System.out.println("save button"+temp);
         return temp;
 
     }
